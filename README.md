@@ -8,20 +8,20 @@
 - 🔍 **重复检测** - 识别和删除重复的书签
 - 🔗 **链接检查** - 检测书签是否失效
 - ☁️ **云端同步** - 支持书签云端备份和同步
-- 🎨 **拖拽整理** - 直观的拖拽界面整理书签
 - 📱 **响应式设计** - 支持 popup 和 web 两种界面
+- 🔄 **导入导出** - 支持 HTML 和 JSON 格式导入导出
 
 ## 智能分类支持
 
 自动将书签分类到以下文件夹：
 
-- 搜索引擎 (Google, 百度, Bing, etc.)
-- 邮箱 (Gmail, Outlook, 163邮箱, etc.)
-- 社交媒体 (微博, 知乎, GitHub, etc.)
+- 搜索引擎 (Google, 百度, Bing, 谷歌翻译等)
+- 邮箱 (Gmail, Outlook, 163邮箱, QQ邮箱等)
+- 社交媒体 (微博, 知乎, GitHub, B站等)
 - 新闻资讯
 - 技术开发
 - 购物
-- 视频 (B站, YouTube, etc.)
+- 视频 (B站, YouTube, 爱奇艺等)
 - 音乐
 - 工作
 - 教育
@@ -35,14 +35,64 @@
 - 生活
 - 安全
 
+## 使用方法
+
+### 智能分类
+
+1. 将需要整理的书签放在根目录（书签栏）
+2. 点击"整理书签"按钮
+3. 插件会自动将书签分类到相应文件夹
+
+### 查找重复
+
+1. 点击"重复检测"标签
+2. 选择检测模式（精确匹配/相似匹配）
+3. 查看重复书签列表
+4. 选择删除或保留重复项
+
+### 链接检查
+
+1. 点击"链接检查"标签
+2. 点击"开始检查"按钮
+3. 等待检查完成
+4. 查看失效链接列表
+5. 选择删除失效的书签
+
+### 导入导出
+
+- **导入**：支持导入 HTML 或 JSON 格式的书签文件
+- **导出**：可以将书签导出为 HTML 或 JSON 格式备份
+
+### 云端同步
+
+1. 注册或登录账号
+2. 点击"同步书签"按钮
+3. 将本地书签同步到云端
+
+## 技术栈
+
+- **前端框架**: React 18 + TypeScript
+- **构建工具**: Vite
+- **数据库**: IndexedDB (通过 Dexie.js)
+- **状态管理**: Zustand
+- **图标**: Lucide React
+
 ## 安装方法
 
-### 从源码安装
+### 方式一：直接安装（推荐）
+
+1. 下载最新版本的 `dist` 文件夹
+2. 在 Chrome 浏览器中打开 `chrome://extensions/`
+3. 启用"开发者模式"
+4. 点击"加载已解压的扩展程序"
+5. 选择 `dist` 文件夹
+
+### 方式二：从源码安装
 
 1. 克隆仓库：
 ```bash
-git clone https://github.com/qwerasdzx-123/Bookmark_Managerz.git
-cd Bookmark_Managerz
+git clone https://github.com/qwerasdzx-123/Bookmark_Manager.git
+cd Bookmark_Manager
 ```
 
 2. 安装依赖：
@@ -55,82 +105,7 @@ npm install
 npm run build
 ```
 
-4. 在 Chrome 浏览器中：
-   - 打开 `chrome://extensions/`
-   - 启用"开发者模式"
-   - 点击"加载已解压的扩展程序"
-   - 选择 `dist` 文件夹
-
-### 开发模式
-
-```bash
-npm run dev
-```
-
-## 使用方法
-
-1. **自动分类**
-   - 点击"整理"按钮，自动将根目录的书签分类到相应文件夹
-   - 基于域名、标题和内容智能匹配
-
-2. **拖拽整理**
-   - 在 web 界面中可以拖拽书签到不同文件夹
-   - 支持批量选择和移动
-
-3. **查找重复**
-   - 自动检测重复的书签 URL
-   - 提供合并或删除选项
-
-4. **链接检查**
-   - 检测失效的书签链接
-   - 标记 404、超时等状态
-
-## 技术栈
-
-- **前端框架**: React 18 + TypeScript
-- **构建工具**: Vite
-- **数据库**: IndexedDB (通过 Dexie.js)
-- **拖拽**: React Beautiful DnD
-- **状态管理**: Zustand
-- **图标**: Lucide React
-
-## 项目结构
-
-```
-src/
-├── background/          # 后台脚本
-├── content/             # 内容脚本
-├── popup/               # 弹窗界面
-├── web/                 # Web 管理界面
-├── services/            # 业务逻辑
-│   ├── bookmarkImportExport.ts
-│   ├── bookmarkOrganizer.ts
-│   ├── cloudSync.ts
-│   ├── indexedDB.ts
-│   └── linkChecker.ts
-├── store/               # 状态管理
-├── types/               # 类型定义
-└── web/                 # Web 界面组件
-```
-
-## 开发命令
-
-```bash
-# 安装依赖
-npm install
-
-# 开发模式
-npm run dev
-
-# 构建生产版本
-npm run build
-
-# 代码检查
-npm run lint
-
-# 类型检查
-npm run typecheck
-```
+4. 在 Chrome 浏览器中加载 `dist` 文件夹
 
 ## 贡献指南
 
@@ -139,11 +114,3 @@ npm run typecheck
 ## 许可证
 
 MIT License
-
-## 更新日志
-
-### v1.0.0
-- 初始版本发布
-- 支持智能书签分类
-- 支持重复检测和链接检查
-- 支持云端同步
